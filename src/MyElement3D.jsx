@@ -21,7 +21,7 @@ export default function MyElement3D() {
                 <axesHelper />
                 <mesh
                 rotate
-                scale={[0.1, 0.1, 0.1]}
+                scale={[0.2, 0.3, 0.3]}
                 position={[2, 3, 0]}>
                     <sphereGeometry/>
                     <meshStandardMaterial color={"red"}/>
