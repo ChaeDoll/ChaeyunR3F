@@ -22,7 +22,7 @@ export default function MyElement3D() {
                 <mesh
                 rotate
                 scale={[0.1, 0.1, 0.1]}
-                position={[2, 2, 0]}>
+                position={[2, 3, 0]}>
                     <sphereGeometry/>
                     <meshStandardMaterial color={"red"}/>
                     <axesHelper scale={3}/>
