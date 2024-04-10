@@ -15,7 +15,7 @@ export default function MyElement3D() {
             <OrbitControls/>
             <mesh ref={meshRef} 
             rotation={[THREE.MathUtils.degToRad(15),THREE.MathUtils.degToRad(0),THREE.MathUtils.degToRad(20)]} 
-            scale={[1, 1, 3]} position={[0, 0, 0]}>
+            scale={[1, 1, 4]} position={[0, 0, 0]}>
                 <boxGeometry/>
                 <meshStandardMaterial color={'#e67e22'} opacity={0.5} transparent={true}/>
                 <axesHelper />
