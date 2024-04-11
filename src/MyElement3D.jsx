@@ -1,32 +1,38 @@
-import { OrbitControls } from "@react-three/drei";
+import { Box, OrbitControls } from "@react-three/drei";
+import { useControls } from "leva";
 import { useFrame } from "@react-three/fiber";
-import { useRef, useState } from "react"
+import { useRef, useState, useEffect } from "react"
 import * as THREE from "three";
 
 export default function MyElement3D({rotation}) {
     const meshRef = useRef();
-    useFrame((state, delta)=>{
-        meshRef.current.rotation.y += rotation;
+    const wireMeshRef = useRef();
+    const { xSize, ySize, zSize, xSegments, ySegments, zSegments } = useControls({
+        xSize: { value:1, min:0.1, max:5, step:0.01},
+        ySize: { value:1, min:0.1, max:5, step:0.01},
+        zSize: { value:1, min:0.1, max:5, step:0.01},
+        xSegments: { value:1, min:1, max:10, step:1},
+        ySegments: { value:1, min:1, max:10, step:1},
+        zSegments: { value:1, min:1, max:10, step:1}
     })
+    useEffect(()=>{
+        wireMeshRef.current.geometry = meshRef.current.geometry;
+    },[xSize, ySize, zSize, xSegments, ySegments, zSegments])
     return (
         <>
-            <directionalLight position={[2, 2, 2]}/>
-            <axesHelper scale={10}/>
             <OrbitControls/>
+            <directionalLight position={[2, 1, 3]}/>
+            <axesHelper scale={10}/>
             <mesh ref={meshRef} 
             rotation={[THREE.MathUtils.degToRad(0),THREE.MathUtils.degToRad(0),THREE.MathUtils.degToRad(0)]} 
             scale={[1, 1, 1]} position={[0, 0, 0]}>
-                <boxGeometry/>
-                <meshStandardMaterial color={'#e67e22'} opacity={0.5} transparent={true}/>
+                <boxGeometry args={[xSize, ySize, zSize, xSegments, ySegments, zSegments]}/>
+                <meshStandardMaterial color={'#FFFFFF'}/>
                 <axesHelper />
-                <mesh
-                rotate
-                scale={[0.2, 0.3, 0.3]}
-                position={[2, 0, 0]}>
-                    <sphereGeometry/>
-                    <meshStandardMaterial color={"red"}/>
-                    <axesHelper scale={3}/>
-                </mesh>
+            </mesh>
+            <mesh ref={wireMeshRef}
+            position={[0, 0, 0]}>
+                <meshStandardMaterial emissive="yellow" wireframe={true}/>
             </mesh>
         </>
     )
