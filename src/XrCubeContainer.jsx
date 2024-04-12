@@ -5,10 +5,10 @@ import XrCube from "./components/XrCube";
 export default function XrCubeContainer(){ 
     return (
     <>  
-        <XRButton mode="AR" />
-        {/* sessionInit={{
+        <XRButton mode="AR"
+        sessionInit={{
             requiredFeatures: ["hit-test"]
-        }}/> */}
+        }}/>
         <Canvas>
             <XR>
                 <XrCube/>
