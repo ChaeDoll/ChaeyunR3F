@@ -11,7 +11,7 @@ export default function XrCube(){
         <>
             <OrbitControls/>
             <ambientLight/>
-            <mesh ref={boxRef} rotation-x={20*Math.PI/180} position-z={-2.5}>
+            <mesh ref={boxRef} position-z={-5}>
                 <boxGeometry args={[2, 2, 2]}/> 
                 <meshBasicMaterial color={'blue'}/>
             </mesh>
