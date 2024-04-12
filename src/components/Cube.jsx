@@ -10,9 +10,7 @@ export default function Cube({position}){
     })
     return (
         <>
-            <OrbitControls/>
-            <ambientLight/>
-            <mesh ref={cubeRef} positio={position}>
+            <mesh ref={cubeRef} position={position}>
                 <boxGeometry args={[1, 1, 1]}/> 
                 <meshBasicMaterial color={'blue'}/>
             </mesh>

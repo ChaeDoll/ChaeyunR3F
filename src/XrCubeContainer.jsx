@@ -1,5 +1,5 @@
 import { Canvas } from "@react-three/fiber";
-import { XR, XRButton } from "@react-three/xr";
+import { ARButton, XR, XRButton } from "@react-three/xr";
 import XrCube from "./components/XrCube";
 
 export default function XrCubeContainer(){ 
