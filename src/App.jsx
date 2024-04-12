@@ -1,14 +1,11 @@
-import { Canvas } from '@react-three/fiber'
 import './App.css'
-import MyElement3D from './MyElement3D'
-import { useState } from 'react';
+// import MyElement3D from './MyElement3D'
+import XrCubeContainer from './XrCubeContainer';
 
 function App() {
   return (
     <>
-      <Canvas>
-        <MyElement3D/>
-      </Canvas>
+      <XrCubeContainer/>
     </>
   )
 }
