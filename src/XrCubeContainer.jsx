@@ -8,6 +8,7 @@ export default function XrCubeContainer(){
     return (
     <>  
         <XRButton mode="AR"
+        enterOnly={true}
         sessionInit={{
             requiredFeatures: ["hit-test"]
         }}/>
