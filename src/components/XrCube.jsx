@@ -1,13 +1,18 @@
 import { OrbitControls } from "@react-three/drei";
 import { useFrame } from "@react-three/fiber";
-import { Interactive, useHitTest, useXR } from "@react-three/xr";
+import { Interactive, stopSession, toggleSession, useHitTest } from "@react-three/xr";
 import { useRef, useState } from "react";
 import Cube from "./Cube";
 
 export default function XrCube(){
-    // const {isPresenting} = useXR();
     const [cubes, setCubes] = useState([]);
-    // const boxRef = useRef();
+    const ref = useRef();
+    const handleClick = () => {
+        alert('버튼이 눌렸습니다.');
+    };
+    const handlePressExitButton = (e) => {
+        toggleSession();
+    }
     const ringRef = useRef();
     useHitTest((hitMatrix, hit)=>{
         hitMatrix.decompose(ringRef.current.position, ringRef.current.quaternion, ringRef.current.scale);
@@ -26,6 +31,17 @@ export default function XrCube(){
         <>
             <OrbitControls/>
             <ambientLight/>
+            
+            <Interactive onSelect={handlePressExitButton}> 
+                <mesh
+                ref={ref}
+                position={[0, 0, -5]}
+                onClick={handleClick}>
+                    <boxGeometry args={[1, 1, 1]} />
+                    <meshBasicMaterial color="blue" />
+                </mesh>
+            </Interactive>
+
             {cubes?.map(({position, id})=>{
                 return <Cube key={id} position={position}/>
             })}
