@@ -1,30 +1,23 @@
 import { Box, Text } from "@react-three/drei";
 import { createPortal, useThree } from "@react-three/fiber";
-import { toggleSession, useInteraction, useXR } from "@react-three/xr";
-import { useRef, useState } from "react";
+import { Interactive, toggleSession, useXR } from "@react-three/xr";
+import { useRef } from "react";
 
 const ExitButton = (props) => {
-    const {session} = useXR();
-    const [buttonText, setButtonText] = useState("Enter ARAR");
+    const {session, isPresenting} = useXR();
     const boxRef = useRef();
     const handleClick = async () => {
-        const session = await toggleSession('immersive-ar');
-        if (session) {
-            setButtonText("Exit ARAR");
-        } else {
-            setButtonText("Enter ARAR");
-        }
+        toggleSession();
     }
-    useInteraction(boxRef, 'onSelect', handleClick)
     return (<>
+    <Interactive onSelect={handleClick}>
         <Box ref={boxRef} {...props} args={[0.4,0.1,0.01]}>
             <meshStandardMaterial color={0xffffff}/>
             <Text position={[0, 0, 0.01]} fontSize={0.03} color="#000" anchorX="center" anchorY="middle">
-                {buttonText}
+                {session ? "Exit ARAR" : "Enter ARAR"}
             </Text>
-            {/* <button onClick={handleClick}>{buttonText}</button> */}
-
         </Box>
+    </Interactive>
     </>)
 }
 
