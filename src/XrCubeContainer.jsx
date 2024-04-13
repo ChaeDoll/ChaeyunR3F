@@ -1,6 +1,8 @@
 import { Canvas } from "@react-three/fiber";
 import { XR, XRButton } from "@react-three/xr";
 import XrCube from "./components/XrCube";
+import XRToggleButton from "./components/XRToggleButton";
+import { OrbitControls } from "@react-three/drei";
 
 export default function XrCubeContainer(){ 
     return (
@@ -11,6 +13,9 @@ export default function XrCubeContainer(){
         }}/>
         <Canvas>
             <XR>
+                <OrbitControls/>
+                <ambientLight/>
+                <XRToggleButton/>
                 <XrCube/>
             </XR>   
         </Canvas>
