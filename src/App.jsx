@@ -8,11 +8,9 @@ function App() {
     <>
       <XRButton mode='AR'/>
       <Canvas>
-        <XR referenceSpace="local">
+        <XR>
           <ambientLight />
-          <pointLight position={[10, 10, 10]} />
           <XrCubeContainer />
-          <Controllers />
         </XR>
       </Canvas>
     </>
