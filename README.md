@@ -1,8 +1,11 @@
-# React + Vite
+# WEBXR + Three.js + React (React Three Fiber)
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Code for the [Youtube Playlist](https://youtube.com/playlist?list=PLpM_sf_d5YTPXeVp4cmgN_cNBj9pNTEmZ)
 
-Currently, two official plugins are available:
+[Live link](https://r3f-fiber-draft.vercel.app/)
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Credits
+
+
+Models taken from https://market.pmnd.rs/
+

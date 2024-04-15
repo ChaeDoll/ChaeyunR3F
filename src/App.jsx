@@ -1,37 +1,24 @@
-import { ARButton, Controllers, XR, XRButton, useHitTest } from '@react-three/xr';
-import './App.css'
-import { Canvas } from '@react-three/fiber';
-import ARTestContainer from './ARTestContainer';
-import { useRef } from 'react';
-import { Box } from '@react-three/drei';
-
-export function HitTestExample(props) {
-  const boxRef = useRef(null);
-  useHitTest((hitMatrix) => {
-    if (boxRef.current) {
-      hitMatrix.decompose(boxRef.current.position, boxRef.current.quaternion, boxRef.current.scale)
-    }
-  })
-  return <Box ref={boxRef} {...props} args={[0.1, 0.1, 0.1]} />
-}
+import { Route, Routes } from "react-router-dom";
+import "./App.css";
+import CubeContainer from "./components/cube/CubeContainer";
+import XrCubeContainer from "./components/xr-cube/XrCubeContainer";
+import XrGalleryContainer from "./components/xr-gallery/XrGalleryContainer";
+import XrHitCubeContainer from "./components/xr-hit-cube/XrHitCubeContainer";
+import XrHitModelContainer from "./components/xr-hit-model/XrHitModelContainer";
+import XrOverlayContainer from "./components/xr-overlay/XrOverlayContainer";
 
 function App() {
   return (
-    <>
-      <ARButton sessionInit={{
-      optionalFeatures:["hit-test"]
-      }}>
-        <Canvas>
-          <XR>
-            <ambientLight />
-            <pointLight position={[5, 5, 5]} />
-            <Controllers />
-            <HitTestExample position={[0, 0.8, -1]} />
-            {/* <ARTestContainer /> */}
-          </XR>
-        </Canvas>
-      </ARButton>
-    </>
-  )
+    <Routes>
+      <Route path="/" element={<XrCubeContainer />} />
+      <Route path="/cube" element={<CubeContainer />} />
+      <Route path="/xr-cube" element={<XrCubeContainer />} />
+      <Route path="/xr-hit-cube" element={<XrHitCubeContainer />} />
+      <Route path="/xr-hit-model" element={<XrHitModelContainer />} />
+      <Route path="/xr-overlay" element={<XrOverlayContainer />} />
+      <Route path="/xr-gallery" element={<XrGalleryContainer />} />
+    </Routes>
+  );
 }
+
 export default App;
