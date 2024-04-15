@@ -35,7 +35,7 @@ function Button(props) {
   )
 }
 
-export default function XrCubeContainer() {
+export default function ARTestContainer() {
   return (
     <>
     <XrCube/>
