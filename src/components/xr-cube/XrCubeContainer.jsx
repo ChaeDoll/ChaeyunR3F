@@ -1,11 +1,11 @@
 import { Canvas } from "@react-three/fiber";
-import { ARButton, XR } from "@react-three/xr";
+import { ARButton, VRButton, XR, XRButton } from "@react-three/xr";
 import XrCube from "./XrCube";
 
 const XrCubeContainer = () => {
   return (
     <>
-      <ARButton />
+      <VRButton />
       <Canvas>
         <XR>
           <XrCube />
